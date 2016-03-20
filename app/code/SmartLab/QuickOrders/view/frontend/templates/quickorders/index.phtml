@@ -1,0 +1,27 @@
+<?php /** @var \SmartLab\QuickOrders\Block\Account\QuickOrders $block */ ?>
+<form class="form form-quick-orders" action="<?php echo $block->getUrl('customer/quickorders/add') ?>" method="post" id="form-validate" enctype="multipart/form-data"
+      data-hasrequired="<?php echo __('* Required Fields') ?>">
+    <input type="hidden" name="get_product_info_url" id="get-product-info-url" value="<?php echo $block->getUrl('customer/quickorders/getproductinfo') ?>" />
+    <table id="quick-order-items">
+        <tbody>
+            <tr>
+                <th><?php echo __('SKU') ?></th>
+                <th><?php echo __('Name') ?></th>
+                <th><?php echo __('Price') ?></th>
+                <th><?php echo __('Quantity') ?></th>
+                <th><?php echo __('Action') ?></th>
+            </tr>
+            <tr class="item-info" id="info_0">
+                <td>
+                    <input class="item-sku" id="item-sku_0" name="sku_0" value="" type="text" onchange="updateSkuInformation(jQuery(this).val(), jQuery('#item-qty_0').val(), '0')"/>
+                    <input class="item-id" id="item-id_0" name="id_0" value="" type="hidden"/>
+                </td>
+                <td><span class="item-name" id="item-name_0"><?php echo __("Not Available") ?></span></td>
+                <td><span class="item-price" id="item-price_0"><?php echo __("Not Available") ?></span></td>
+                <td><input class="item-qty" id="item-qty_0" name="qty_0" value="1" type="text" maxlength="12" onchange="updateSkuInformation(jQuery('#item-sku_0').val(), jQuery(this).val(), '0')"/></td>
+                <td><a href="javascript:void(0);" onclick="removeQuickOrderItem(0)"><?php echo __('Remove this entry') ?></a></td>
+            </tr>
+        </tbody>
+    </table>
+    <input name="submit_data" value="<?php echo __('Submit Data') ?>" type="submit" />
+</form>
